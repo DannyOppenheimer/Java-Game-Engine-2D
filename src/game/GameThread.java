@@ -17,7 +17,6 @@ public class GameThread extends JPanel implements Runnable {
 		this.game = game;
 		setFocusable(true);
 		
-		
 	}
 	
 	@Override
@@ -29,7 +28,7 @@ public class GameThread extends JPanel implements Runnable {
 				if(game.getScreenFactory().getCurrentScreen() != null)
 					game.getScreenFactory().getCurrentScreen().onUpdate();
 	
-				Thread.sleep(10);
+				Thread.sleep((long) (10));
 				
 			} catch(Exception e) {
 				
