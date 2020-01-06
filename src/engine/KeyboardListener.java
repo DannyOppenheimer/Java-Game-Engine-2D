@@ -1,11 +1,11 @@
-package game;
+package engine;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyboardListener implements KeyListener {
 
-	private boolean[] keys = new boolean[256];
+	private boolean[] keys = new boolean[612];
 	
 	@Override
 	public void keyTyped(KeyEvent event) {
@@ -21,6 +21,7 @@ public class KeyboardListener implements KeyListener {
 	public void keyReleased(KeyEvent event) {
 		keys[event.getKeyCode()] = false;
 	}
+	
 	
 	public boolean isKeyPressed(int key) {
 		return keys[key];

@@ -1,4 +1,4 @@
-package game;
+package engine;
 
 public abstract class AbstractEntity implements IEntity {
 

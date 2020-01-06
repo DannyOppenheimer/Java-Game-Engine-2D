@@ -1,11 +1,11 @@
-package game;
+package engine;
 
-public class ScreenFactory {
+public class ScreenManager {
 	
 	private final Game game;
 	private Screen screen;
 	
-	public ScreenFactory(Game game) {
+	public ScreenManager(Game game) {
 		this.game = game;
 	}
 

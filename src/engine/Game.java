@@ -1,16 +1,24 @@
-package game;
+package engine;
 
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 
 public class Game {
 	
 	private final JFrame window = new JFrame();
-	private final ScreenFactory screenFactory;
+	private final ScreenManager screenManager;
 	private final GameThread gameThread;
 	private final KeyboardListener keyboardListener;
 	private final MousepadListener mousepadListener;
 	
-	public Game(int windowX, int windowY, String windowTitle) {
+	public Game(int windowX, int windowY, String windowTitle, int ms) {
+		
+		// ensures cross-platform usage is correct
+		try {
+			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		window.setSize(windowX, windowY);
 		window.setResizable(false);
@@ -19,9 +27,9 @@ public class Game {
 		window.setLocationRelativeTo(null);
 		window.setTitle(windowTitle);
 		
-		screenFactory = new ScreenFactory(this);
+		screenManager = new ScreenManager(this);
 		
-		gameThread = new GameThread(this);
+		gameThread = new GameThread(this, ms);
 		
 		keyboardListener = new KeyboardListener();
 		
@@ -31,7 +39,7 @@ public class Game {
 		window.addKeyListener(keyboardListener);
 		window.addMouseListener(mousepadListener);
 		
-		new Thread(gameThread).start();;
+		new Thread(gameThread).start();
 		
 		window.setVisible(true);
 		
@@ -45,8 +53,8 @@ public class Game {
 		return mousepadListener;
 	}
 	
-	public ScreenFactory getScreenFactory() {
-		return screenFactory;
+	public ScreenManager getScreenFactory() {
+		return screenManager;
 	}
 	
 	public JFrame getWindow() {
