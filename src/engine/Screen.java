@@ -6,9 +6,9 @@ public abstract class Screen {
 	
 	private final ScreenManager screenManager;
 	
-	public Screen(ScreenManager screenFactory) {
+	public Screen(ScreenManager screenManager) {
 		
-		this.screenManager = screenFactory;
+		this.screenManager = screenManager;
 		
 	}
 	
@@ -18,7 +18,7 @@ public abstract class Screen {
 	
 	public abstract void onDraw(Graphics2D g2d);
 	
-	public ScreenManager getScreenFactory() {
+	public ScreenManager getScreenManager() {
 		
 		return screenManager;
 		

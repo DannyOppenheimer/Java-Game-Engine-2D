@@ -1,6 +1,6 @@
 package engine;
 
-import java.awt.event.MouseEvent;
+import java.awt.event.MouseEvent; 
 import java.awt.event.MouseListener;
 
 public class MousepadListener implements MouseListener {
@@ -10,20 +10,24 @@ public class MousepadListener implements MouseListener {
 	
 	@Override
 	public void mouseClicked(MouseEvent event) {
-		mouseX = event.getX();
-		mouseY = event.getY();
-		clicked = true;
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent event) {
+		mouseX = event.getX();
+		mouseY = event.getY();
+		if (event.getButton() == MouseEvent.BUTTON1) {
+		        clicked = true;
+		}
 		mouseClicked(event);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent event) {
-		clicked = false;
+	    if (event.getButton() == MouseEvent.BUTTON1) {
+	    	clicked = false;
+	    }
 	}
 
 	@Override
